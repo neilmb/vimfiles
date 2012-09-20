@@ -1,5 +1,9 @@
 syntax enable
 set background=dark
 colorscheme solarized
-set gfn=Inconsolata:h14
+if has("gui_gtk2")
+    set gfn=Inconsolata\ 12
+else
+    set guifont=Inconsolata:h14
+endif
 set lines=42
