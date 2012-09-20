@@ -1,4 +1,5 @@
+syntax enable
 set background=dark
 colorscheme solarized
-set gfn=Inconsolata
-set lines=40
+set gfn=Inconsolata:h14
+set lines=42
