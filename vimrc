@@ -64,4 +64,6 @@ set noswapfile
 
 """
 filetype plugin on
-let g:tex_flavor='latex'
+let g:tex_flavor='xelatex'
+let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
+let g:Tex_ViewRule_pdf = 'okular --unique'
