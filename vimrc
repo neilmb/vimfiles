@@ -64,6 +64,10 @@ set noerrorbells         " don't beep
 set nobackup
 set noswapfile
 
+set wildmode=longest,list,full
+set wildmenu 
+
+
 "
 set statusline=   " clear the statusline for when vimrc is reloaded
 set statusline+=%-3.3n\                      " buffer number
@@ -102,6 +106,8 @@ set statusline+=%-14.(%c,%l%V/%L%)\ %<%P        " offset"
 
 """
 filetype plugin on
+let g:tex_flavor='xelatex'
+let g:Tex_DefaultTargetFormat = 'pdf'  
 let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
 if has("gui_macvim")
   let g:Tex_ViewRule_pdf = 'open -a Preview'
