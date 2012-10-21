@@ -62,8 +62,12 @@ set noerrorbells         " don't beep
 set nobackup
 set noswapfile
 
+set wildmode=longest,list,full
+set wildmenu 
+
 """
 filetype plugin on
 let g:tex_flavor='xelatex'
+let g:Tex_DefaultTargetFormat = 'pdf'  
 let g:Tex_CompileRule_pdf = 'xelatex -interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf = 'okular --unique'
