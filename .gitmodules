@@ -13,3 +13,21 @@
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "bundle/todo.txt-vim"]
+	path = bundle/todo.txt-vim
+	url = https://github.com/boushley/todo.txt-vim
+[submodule "bundle/vcscommand"]
+	path = bundle/vcscommand
+	url = http://repo.or.cz/r/vcscommand.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = http://github.com/bling/vim-airline
+[submodule "bundle/vim-fugitive"]
+	path = bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-git"]
+	path = bundle/vim-git
+	url = git://github.com/tpope/vim-git.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
