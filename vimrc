@@ -43,6 +43,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " More configuration
 set nowrap        " don't wrap lines
 set hidden
+set mouse=a
 set spell spelllang=en_us
 set ruler
 set backspace=indent,eol,start
