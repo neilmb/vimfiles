@@ -1,6 +1,21 @@
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+set shell=/bin/bash
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" required
+Plugin 'gmarik/vundle'
+
+" NMB plugins
+Plugin 'wincent/Command-T.git'
+Plugin 'bling/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-markdown'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+
 syntax on
 filetype on
 filetype plugin indent on
@@ -103,3 +118,9 @@ filetype plugin indent off
 set rtp+=/usr/local/go/misc/vim
 filetype plugin indent on
 syntax on
+
+" YouCompleteMe
+let g:ycm_filetype_whitelist = {
+      \ 'python' : 1,
+      \ 'cpp' : 1,
+      \}
