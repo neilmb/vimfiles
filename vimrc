@@ -12,6 +12,7 @@ Plugin 'wincent/Command-T.git'
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
+let g:airline_powerline_fonts = 1
 Plugin 'tpope/vim-markdown'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
