@@ -27,6 +27,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 syntax on
 filetype on
@@ -78,6 +79,12 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set smarttab      " insert tabs on the start of a line according to
                   "    shiftwidth, not tabstop
 set expandtab
+
+set cmdheight=1
+set laststatus=2
+set showcmd
+set showmode
+set number
 
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
@@ -161,3 +168,21 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 let g:gitgutter_sign_column_always = 1
+
+autocmd FileType * setlocal colorcolumn=0
+
+autocmd FileType c          setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=119
+autocmd FileType cpp        setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=119
+autocmd FileType java       setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=119
+autocmd FileType lua        setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType python     setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=119
+autocmd FileType yaml       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType html       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType css        setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType ruby       setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType erb        setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType eruby      setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+autocmd FileType html.eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
+
+autocmd FileType * IndentGuidesEnable
