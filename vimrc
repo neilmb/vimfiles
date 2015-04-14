@@ -20,6 +20,13 @@ let g:airline_powerline_fonts = 1
 Plugin 'tpope/vim-markdown'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'airblade/vim-gitgutter'
+Plugin 'kien/ctrlp.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'davidhalter/jedi-vim'
 
 syntax on
 filetype on
@@ -27,6 +34,8 @@ filetype plugin indent on
 
 " Save the shift key!
 nnoremap ; :
+
+let mapleader = ","
 
 " FFS copy and paste
 nmap <C-V> "+gP
@@ -130,3 +139,25 @@ let g:ycm_filetype_whitelist = {
       \ 'python' : 1,
       \ 'cpp' : 1,
       \}
+
+let g:rbpt_max = 16
+
+let g:rbpt_colorpairs = [ [ 'red',     'red1'     ],
+                        \ [ 'yellow',  'yellow1'  ],
+                        \ [ 'green',   'green1'   ],
+                        \ [ 'blue',    'blue1'    ],
+                        \ [ 'cyan',    'cyan1'    ],
+                        \ [ 'magenta', 'magenta1' ],
+                        \ [ 'red',     'red2'     ],
+                        \ [ 'yellow',  'yellow2'  ],
+                        \ [ 'green',   'green2'   ],
+                        \ [ 'blue',    'blue2'    ],
+                        \ [ 'cyan',    'cyan2'    ],
+                        \ [ 'magenta', 'magenta2' ] ]
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+let g:gitgutter_sign_column_always = 1
