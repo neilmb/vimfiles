@@ -1,7 +1,7 @@
 filetype off
 set shell=/bin/bash
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " required
@@ -9,10 +9,14 @@ Plugin 'gmarik/vundle'
 
 " NMB plugins
 Plugin 'wincent/Command-T.git'
-Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'altercation/vim-colors-solarized'
+set t_Co=16 
+let g:solarized_termcolors=16 
+colorscheme solarized
+Plugin 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
+
 Plugin 'tpope/vim-markdown'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
