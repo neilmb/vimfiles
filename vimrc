@@ -20,7 +20,6 @@ let g:airline_powerline_fonts = 1
 Plugin 'tpope/vim-markdown'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'kien/ctrlp.vim'
@@ -29,6 +28,10 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
+
 syntax on
 filetype on
 filetype plugin indent on
@@ -36,7 +39,11 @@ filetype plugin indent on
 " Save the shift key!
 nnoremap ; :
 
-let mapleader = ","
+let mapleader = "'"
+
+" Quickly switch buffers
+nmap <leader>n :bn<cr>
+nmap <leader>p :bp<cr>
 
 " FFS copy and paste
 nmap <C-V> "+gP
@@ -61,6 +68,7 @@ set hidden
 set mouse=a
 set spell spelllang=en_us
 set ruler
+set cursorline
 set backspace=indent,eol,start
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
