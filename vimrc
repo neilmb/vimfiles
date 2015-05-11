@@ -14,6 +14,7 @@ Plugin 'altercation/vim-colors-solarized'
 set t_Co=16 
 let g:solarized_termcolors=16 
 colorscheme solarized
+set background=dark
 Plugin 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 
