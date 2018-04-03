@@ -1,50 +1,57 @@
 filetype off
 set shell=/bin/bash
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
-
-" required
-Plugin 'gmarik/vundle'
+call plug#begin()
 
 " NMB plugins
-Plugin 'wincent/Command-T.git'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 set t_Co=16 
 let g:solarized_termcolors=16 
 colorscheme solarized
 set background=dark
-Plugin 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 
-Plugin 'tpope/vim-markdown'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plug 'tpope/vim-markdown'
+Plug 'lervag/vimtex'
+Plug 'fholgado/minibufexpl.vim'
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'kien/ctrlp.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'airblade/vim-gitgutter'
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1
+Plug 'Lokaltog/vim-easymotion'
+" Plug 'davidhalter/jedi-vim'
 
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
 
-syntax on
-filetype on
-filetype plugin indent on
+Plug 'ivanov/vim-ipython'
 
-" Save the shift key!
-nnoremap ; :
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_enable_on_vim_startup = 1
 
-let mapleader = "'"
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
-" Quickly switch buffers
-nmap <leader>n :bn<cr>
-nmap <leader>p :bp<cr>
+Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-sneak'
+
+Plug 'mileszs/ack.vim'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+Plug 'mindriot101/vim-yapf'
+
+call plug#end()
+
+let mapleader = ","
+
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
 
 " FFS copy and paste
 nmap <C-V> "+gP
@@ -112,19 +119,6 @@ set noswapfile
 set wildmode=longest,list,full
 set wildmenu 
 
-
-"
-set statusline=   " clear the statusline for when vimrc is reloaded
-set statusline+=%-3.3n\                      " buffer number
-set statusline+=%h%m%r%w                     " flags
-set statusline+=%f\                          " file name
-set statusline+=[%{strlen(&ft)?&ft:'none'},  " filetype
-set statusline+=%{strlen(&fenc)?&fenc:&enc}, " encoding
-set statusline+=%{&fileformat}]              " file format
-set statusline+=%=                           " right align
-set statusline+=[0x%B]\                   " current char
-set statusline+=%-14.(%c,%l%V/%L%)\ %<%P        " offset" 
-
 """
 filetype plugin on
 let g:tex_flavor='xelatex'
@@ -135,48 +129,16 @@ if has("gui_macvim")
 else
   let g:Tex_ViewRule_pdf = 'okular --unique'
 endif 
-
-"""
-let g:NERDCreateDefaultMappings = 0
-map <Leader>c<Space> NERDCommenterToggle
-
-"""
 autocmd FileType tex set tabstop=2 shiftwidth=2
 
-" Go highlighting
-filetype off
-filetype plugin indent off
-set rtp+=/usr/local/go/misc/vim
-filetype plugin indent on
-syntax on
+nnoremap <leader>y :Yapf<cr>
 
 " YouCompleteMe
 let g:ycm_filetype_whitelist = {
       \ 'python' : 1,
       \ 'cpp' : 1,
       \}
-
-let g:rbpt_max = 16
-
-let g:rbpt_colorpairs = [ [ 'red',     'red1'     ],
-                        \ [ 'yellow',  'yellow1'  ],
-                        \ [ 'green',   'green1'   ],
-                        \ [ 'blue',    'blue1'    ],
-                        \ [ 'cyan',    'cyan1'    ],
-                        \ [ 'magenta', 'magenta1' ],
-                        \ [ 'red',     'red2'     ],
-                        \ [ 'yellow',  'yellow2'  ],
-                        \ [ 'green',   'green2'   ],
-                        \ [ 'blue',    'blue2'    ],
-                        \ [ 'cyan',    'cyan2'    ],
-                        \ [ 'magenta', 'magenta2' ] ]
-
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 
 autocmd FileType * setlocal colorcolumn=0
 
@@ -194,4 +156,9 @@ autocmd FileType erb        setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 autocmd FileType eruby      setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
 autocmd FileType html.eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=119
 
-autocmd FileType * IndentGuidesEnable
+" CODULUS: Set up formatting to be consistent with our style guide
+autocmd BufRead,BufNewFile *.cc,*.h,*.c,*.sh,*.js,*.css set shiftwidth=2 tabstop=2 softtabstop=2 expandtab cindent cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+
+" Highlight any tabs anywhere
+highlight EekATab ctermbg=red guibg=red
+match EekATab /\t/
