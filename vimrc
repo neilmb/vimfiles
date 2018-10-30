@@ -4,11 +4,17 @@ set shell=/bin/bash
 call plug#begin()
 
 " NMB plugins
+if has("termguicolors")     " set true colors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
 Plug 'altercation/vim-colors-solarized'
-set t_Co=16 
-let g:solarized_termcolors=16 
+"let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
+
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 
@@ -32,7 +38,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_enable_on_vim_startup = 1
 
-Plug '/usr/local/opt/fzf'
+Plug '/home/neil/.fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-vinegar'
@@ -76,7 +82,7 @@ set hidden
 set mouse=a
 set spell spelllang=en_us
 set ruler
-set cursorline
+" set cursorline
 set backspace=indent,eol,start
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
